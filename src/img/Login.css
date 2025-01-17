@@ -1,75 +1,22 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-}
-
 .login-container {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  justify-content: flex-end; 
-  align-items: center; 
-  background-image: url('../img/Puentenaranja.jpeg'); 
+  background-image: url('../img/Puentenaranja.jpeg');
   background-size: cover;
   background-position: center;
-}
-
-.form-container {
-  position: relative;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
   width: 100%;
-  max-width: 325px; 
-  padding: 204px 49px; 
-  background-color: rgba(50, 50, 50, 0.8); 
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
-  display: flex;
-  flex-direction: column;
+  position: relative;
 }
 
-h1 {
-  color: #ffffff;
-  font-size: 24px;  text-align: center;
-  margin-bottom: 20px; 
-}
-
-label {
-  color: #ffffff;
-  font-size: 16px; 
-  margin: 6px; 
-}
-
-input {
-  width: 94%; 
-  padding: 10px;
-  margin-bottom: 15px; 
-  border: 1px solid #d1d1d1; 
-  border-radius: 5px;
-  font-size: 14px; 
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.flex {
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between; 
-}
-
-.gap-2 {
-  gap: 7px;
-}
-
-a {
-  flex-shrink: 1;  
-  text-align: left; 
-  color: orange;
-}
-
-button {
-  flex-shrink: 0; 
-  width: auto; 
-  padding: 8px 16px;
-  background-color: orange;
+  justify-content: center;
+  background-color: rgba(31, 41, 55, 0.5);
 }
