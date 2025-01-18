@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../img/Login.css';
+import '../../img/Login.css';
 
 function Login() {
   return (
@@ -40,7 +40,7 @@ function Login() {
                 type="submit"
                 className="w-full sm:w-auto bg-orange-500 text-white py-2 px-4 text-md rounded-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:ring-opacity-50 shadow-md hover:shadow-orange-500/30"
               >
-                <Link to="/Dashboard">Acceder</Link> 
+                <Link to="/">Acceder</Link> 
               </button>
             </div>
           </form>

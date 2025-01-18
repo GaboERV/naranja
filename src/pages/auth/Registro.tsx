@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../img/Login.css';
+import '../../img/Login.css';
 
 function Registro() {
   return (
@@ -91,7 +91,7 @@ function Registro() {
             </div>
 
             <div className="flex flex-col sm:flex-row justify-between items-center mt-8 gap-4">
-              <Link to="/" className="text-lg text-orange-200 hover:text-orange-100 hover:underline">
+              <Link to="/login" className="text-lg text-orange-200 hover:text-orange-100 hover:underline">
                 ¿Ya tienes cuenta? Inicia sesión
               </Link>
               <button
