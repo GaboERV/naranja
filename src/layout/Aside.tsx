@@ -1,15 +1,31 @@
 import { Link } from "react-router-dom";
 import { navigationItems } from "./navigationItems";
+import { navigationItemsEmpleado } from "./navigationItemsEmpleado";
 
-const Aside = () => {
-  
+
+
+// Define the type for a navigation item
+interface NavigationItem {
+    path: string;
+    text: string;
+}
+
+const Aside: React.FC = () => {
+    
+    const token = localStorage.getItem('token');
+    const tokenEmpleado = localStorage.getItem('token-empleado');
+
+    // Type the 'items' array
+    const items: NavigationItem[] = token ? navigationItems : tokenEmpleado ? navigationItemsEmpleado : [];
+
+
   return (
     <aside className="w-64 bg-gradient-to-b from-orange-900 to-orange-700 h-screen py-8 px-6 flex flex-col overflow-y-auto">
       <h1 className="text-orange-50 text-3xl font-bold mb-12 text-center">
         StuEmpresa
       </h1>
 
-      {navigationItems.map((item) => (
+      {items.map((item) => (
         <Link
         key={item.path}
         to={item.path}
@@ -19,8 +35,7 @@ const Aside = () => {
         </Link>
       ))}
     </aside>
-
-
   );
 }
+
 export default Aside;
