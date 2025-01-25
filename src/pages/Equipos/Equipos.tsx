@@ -468,29 +468,8 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({
   const tokenEmpleado = localStorage.getItem("token-empleado");
   const isAuthenticated = !!(token || tokenEmpleado);
 
-  const [empresaId, setEmpresaId] = useState<number | null>(null);
-
   useEffect(() => {
-    if (isAuthenticated) {
-      const decodedToken = decodeToken();
-      setEmpresaId(decodedToken?.id || null);
-    }
   }, [isAuthenticated]);
-
-  const decodeToken = () => {
-    try {
-      if (token) {
-        return JSON.parse(token);
-      }
-      if (tokenEmpleado) {
-        return JSON.parse(tokenEmpleado);
-      }
-      return null;
-    } catch (error) {
-      console.error("Error parsing token:", error);
-      return null;
-    }
-  };
   if (!selectedTeam) {
     return <div>No team selected</div>;
   }
