@@ -12,10 +12,12 @@ const Header = () => {
 
     useEffect(() => {
       const token = localStorage.getItem('token');
-    
-      if(token) {
+      const tokenEmpleado = localStorage.getItem('token-empleado');
+      const isAuthenticated = (token || tokenEmpleado);
+
+      if(isAuthenticated) {
         try {
-            const parsedToken = JSON.parse(token) as UserData
+            const parsedToken = JSON.parse(isAuthenticated) as UserData
           setUserData(parsedToken)
           console.log(parsedToken)
         }catch(error) {
@@ -24,17 +26,14 @@ const Header = () => {
         }
       }
     }, []);
-
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('token-empleado');
       navigate('/login')
   };
-
   return (
     <header className="flex items-center justify-end h-16 bg-[#ffffff] text-black px-4 shadow">
       <div className="flex items-center gap-4">
@@ -73,6 +72,7 @@ const Header = () => {
       </div>
     </header>
   );
+
 };
 
 export default Header;
