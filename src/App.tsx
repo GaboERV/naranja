@@ -10,6 +10,7 @@ import Equipos from "./pages/Equipos/Equipos";
 import LoginEmpleado from "./pages/auth/LoginEmpleado";
 import VerifyEmail from "./pages/auth/VerifyEmail";
 import VerifyAutentication from "./pages/auth/VerifyAutentication";
+import Inicio from "./pages/empleados/Inicio";
 
 const App = () => {
   return (
@@ -28,7 +29,7 @@ const App = () => {
         </Route>
         <Route path="/Empleados" element={<Layout />}>
           <Route index element={<Dashboard />} />
-          <Route path="Proyectos" element={<Proyectos/>} />
+          <Route path="Inicio" element={<Inicio/>} />
         </Route>
       </Routes>
      
