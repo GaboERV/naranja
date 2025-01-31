@@ -9,6 +9,7 @@ import Proyectos from "./pages/proyectos/Proyectos";
 import Equipos from "./pages/Equipos/Equipos";
 import LoginEmpleado from "./pages/auth/LoginEmpleado";
 import VerifyEmail from "./pages/auth/VerifyEmail";
+import VerifyAutentication from "./pages/auth/VerifyAutentication";
 
 const App = () => {
   return (
@@ -17,7 +18,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/login-empleado" element={<LoginEmpleado />} />
         <Route path="/Registro" element={<Registro />}/>
-        <Route path="/Verify-email" element={<VerifyEmail />} />
+        <Route path="/Verify-email" element={<VerifyEmail />} />ri
+        <Route path="/Verify" element={<VerifyAutentication />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="Recursos" element={<Recursos/>} />
