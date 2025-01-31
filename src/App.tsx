@@ -3,7 +3,6 @@ import Login from "./pages/auth/Login";
 import Registro from "./pages/auth/Registro";
 import Dashboard from "./pages/dashboard/Dashboard";
 import "./index.css";
-import Layout from "./layout/Layout";
 import Recursos from "./pages/recursos/Recursos";
 import Proyectos from "./pages/proyectos/Proyectos";
 import Equipos from "./pages/Equipos/Equipos";
@@ -34,7 +33,7 @@ const App = () => {
         {/* Rutas de Empleados */}
         <Route path="/Empleados" element={<EmpleadoLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path="Inicio" element={<Inicio />} />
+          <Route path="Proyecto_Asig" element={<Inicio />} />
         </Route>
       </Routes>
     </Router>

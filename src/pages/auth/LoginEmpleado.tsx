@@ -77,10 +77,10 @@ function LoginEmpleado() {
 
                         <div className="mb-4">
                             <label htmlFor="clavePublica" className="block text-md font-medium text-orange-100 mb-1">
-                                Clave Pública
+                                Contraseña
                             </label>
                             <input
-                                type="text"
+                                type="password"
                                 id="clavePublica"
                                 placeholder="Ingresa tu clave pública"
                                 value={clavePublica}

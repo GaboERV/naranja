@@ -1,5 +1,5 @@
 export const navigationItemsEmpleado = [
     { path: "/Empleados", text: "Dashboard" },
-    { path: "/Empleados/Inicio", text: "Inicio" }
+    { path: "/Empleados/Proyecto_Asig", text: "Proyecto asignado" }
   ];
   

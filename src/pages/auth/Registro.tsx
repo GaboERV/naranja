@@ -117,7 +117,7 @@ function Registro() {
                                         Teléfono
                                     </label>
                                     <input
-                                        type="tel"
+                                        type="number"
                                         id="phone"
                                         placeholder="Ingresa tu número de teléfono"
                                         value={phone}
