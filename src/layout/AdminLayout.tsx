@@ -3,7 +3,7 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Aside from './Aside';
 
-const Layout: React.FC = () => {
+const AdminLayout: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
@@ -12,25 +12,24 @@ const Layout: React.FC = () => {
   useEffect(() => {
     const token = localStorage.getItem('token'); // Token para administradores
     const tokenEmpleado = localStorage.getItem('token-empleado'); // Token para empleados
-    const isAuthenticated = !!(token || tokenEmpleado);
 
-    if (!isAuthenticated) {
-      if (!location.pathname.startsWith('/login')) {
-        navigate('/login');
-      }
+    // Si existen ambos tokens, eliminar el de empleado
+    if (token && tokenEmpleado) {
+        localStorage.removeItem('token-empleado');
+    }
+
+    if (!token) {
+        if (tokenEmpleado) {
+            navigate('/Empleados'); // Si es empleado, se bloquea
+        } else {
+            navigate('/login'); // Si no hay token, se redirige a login
+        }
     } else {
-      // Verificar que el usuario acceda solo a su área correspondiente
-      if (token && location.pathname.startsWith('/Empleados')) {
-        navigate('/unauthorized'); // Ruta de acceso denegado
-      } else if (tokenEmpleado && location.pathname.startsWith('/')) {
-        navigate('/unauthorized'); // Ruta de acceso denegado
-      } else {
         setIsAuthorized(true);
-      }
     }
 
     setIsLoading(false);
-  }, [navigate, location]);
+}, [navigate, location]);
 
   if (isLoading) {
     return <div className="flex min-h-screen justify-center items-center">Loading...</div>;
@@ -53,4 +52,4 @@ const Layout: React.FC = () => {
   );
 };
 
-export default Layout;
+export default AdminLayout;

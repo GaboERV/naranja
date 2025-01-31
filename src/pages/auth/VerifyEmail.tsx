@@ -37,7 +37,7 @@ const VerifyEmail: React.FC = () => {
       setMessage('Correo electrónico verificado con éxito.');
       setTimeout(() => {
         navigate('/login');
-      }, 5000); // Redirigir a /login después de 5 segundos
+      }, 2000); // Redirigir a /login después de 5 segundos
     } catch (err: any) {
       setError(err.message);
     }

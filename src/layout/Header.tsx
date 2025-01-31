@@ -13,25 +13,28 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [userData, setUserData] = useState<UserData | null>(null);
   const [is2FAEnabled, setIs2FAEnabled] = useState<boolean>(false);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false); // Nueva variable para verificar si es admin
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-      const tokenEmpleado = localStorage.getItem('token-empleado');
-      const isAuthenticated = token || tokenEmpleado;
+    const tokenEmpleado = localStorage.getItem('token-empleado');
+    const isAuthenticated = token || tokenEmpleado;
 
     if (isAuthenticated) {
       try {
         const parsedToken = JSON.parse(isAuthenticated) as UserData;
-          setUserData(parsedToken);
+        setUserData(parsedToken);
         setIs2FAEnabled(parsedToken?.Enable2FA || false);
-        console.log(parsedToken);
+        
+        // Verifica si el usuario es admin (si tiene el token de administrador)
+        setIsAdmin(!!token);
+
       } catch (error) {
         console.error('Error parsing token:', error);
         setUserData(null);
       }
     }
   }, []);
-
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -44,7 +47,7 @@ const Header = () => {
   };
 
   const handleToggle2FA = async () => {
-    if (!userData?.id) return;
+    if (!userData?.id || !isAdmin) return; // Evita que empleados activen/desactiven 2FA
     try {
       const response = await fetch(
         `http://localhost:3000/auth/toggle2fa/${userData.id}`,
@@ -59,10 +62,12 @@ const Header = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-         const data = await response.json()
-        setIs2FAEnabled(data.Enable2FA)
+      
+      const data = await response.json();
+      setIs2FAEnabled(data.Enable2FA);
+
     } catch (error) {
-      console.error('Error enabling 2fa', error);
+      console.error('Error enabling 2FA:', error);
     }
   };
 
@@ -92,12 +97,15 @@ const Header = () => {
           </button>
           {isOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-              <button
-                onClick={handleToggle2FA}
-                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
-              >
-                {is2FAEnabled ? 'Deshabilitar 2FA' : 'Habilitar 2FA'}
-              </button>
+              {/* Mostrar la opción de 2FA solo si es admin */}
+              {isAdmin && (
+                <button
+                  onClick={handleToggle2FA}
+                  className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >
+                  {is2FAEnabled ? 'Deshabilitar 2FA' : 'Habilitar 2FA'}
+                </button>
+              )}
               <button
                 onClick={handleLogout}
                 className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"

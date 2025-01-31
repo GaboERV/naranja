@@ -11,6 +11,8 @@ import LoginEmpleado from "./pages/auth/LoginEmpleado";
 import VerifyEmail from "./pages/auth/VerifyEmail";
 import VerifyAutentication from "./pages/auth/VerifyAutentication";
 import Inicio from "./pages/empleados/Inicio";
+import AdminLayout from "./layout/AdminLayout";
+import EmpleadoLayout from "./layout/EmpleadoLayout";
 
 const App = () => {
   return (
@@ -18,21 +20,23 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/login-empleado" element={<LoginEmpleado />} />
-        <Route path="/Registro" element={<Registro />}/>
-        <Route path="/Verify-email" element={<VerifyEmail />} />ri
+        <Route path="/Registro" element={<Registro />} />
+        <Route path="/Verify-email" element={<VerifyEmail />} />
+        ri
         <Route path="/Verify" element={<VerifyAutentication />} />
-        <Route path="/" element={<Layout />}>
+        {/* Rutas de Administradores */}
+        <Route path="/" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path="Recursos" element={<Recursos/>} />
-          <Route path="Proyectos" element={<Proyectos/>} />
-          <Route path="Equipos" element={<Equipos/>} />
+          <Route path="Recursos" element={<Recursos />} />
+          <Route path="Proyectos" element={<Proyectos />} />
+          <Route path="Equipos" element={<Equipos />} />
         </Route>
-        <Route path="/Empleados" element={<Layout />}>
+        {/* Rutas de Empleados */}
+        <Route path="/Empleados" element={<EmpleadoLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path="Inicio" element={<Inicio/>} />
+          <Route path="Inicio" element={<Inicio />} />
         </Route>
       </Routes>
-     
     </Router>
   );
 };

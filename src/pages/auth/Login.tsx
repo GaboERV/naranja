@@ -73,7 +73,7 @@ function Login() {
       <div className="form-overlay">
         <div className="form-container bg-gradient-to-br from-orange-950 via-orange-700 to-orange-800 bg-opacity-95 p-8 rounded-md shadow-md max-w-sm w-full mx-4 my-6 border border-orange-600/30">
           <h1 className="text-3xl font-bold text-orange-100 mb-6 text-center">
-            Inicio de sesión
+            Inicio de sesión empresa
           </h1>
           <form onSubmit={handleSubmit}>
             {error && <p className="text-red-500 mb-4">{error}</p>}

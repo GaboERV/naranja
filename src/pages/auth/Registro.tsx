@@ -8,7 +8,7 @@ interface RegisterData {
     contrasena: string;
     direccion: string;
     telefono: string;
-    clavePublica: string;
+
 }
 
 interface ErrorResponse {
@@ -21,7 +21,6 @@ function Registro() {
     const [password, setPassword] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [address, setAddress] = useState<string>('');
-    const [clavePublica, setclavePublica] = useState<string>('');
     const [error, setError] = useState<string>('');
     const navigate = useNavigate();
 
@@ -35,7 +34,6 @@ function Registro() {
             contrasena: password,
             direccion: address,
             telefono: phone,
-            clavePublica: clavePublica,
         };
 
         try {
@@ -63,7 +61,7 @@ function Registro() {
         <div className="login-container">
             <div className="form-overlay">
                 <div className="form-container bg-gradient-to-br from-orange-950 via-orange-700 to-orange-800 bg-opacity-95 p-8 rounded-lg shadow-lg max-w-4xl mx-auto my-8 border border-orange-600/30">
-                    <h1 className="text-4xl font-bold text-orange-100 mb-8 text-center">Registro</h1>
+                    <h1 className="text-4xl font-bold text-orange-100 mb-8 text-center">Registro empresa</h1>
                     <form onSubmit={handleSubmit}>
                         {error && <p className="text-red-500 mb-4">{error}</p>}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -143,17 +141,7 @@ function Registro() {
                                 </div>
 
                                 <div>
-                                    <label htmlFor="clavePublica" className="block text-lg font-medium text-orange-100 mb-2">
-                                        Clave Pública
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="clavePublica"
-                                        placeholder="Ingresa tu clave pública"
-                                        value={clavePublica}
-                                        onChange={(e) => setclavePublica(e.target.value)}
-                                        className="block w-full px-4 py-3 text-base border border-orange-600/50 rounded-lg shadow-md focus:ring-orange-400 focus:border-orange-400 bg-orange-950/90 text-orange-100 placeholder-orange-300/50"
-                                    />
+                                   
                                 </div>
                             </div>
                         </div>
@@ -163,9 +151,7 @@ function Registro() {
                                   <Link to="/login" className="text-md text-orange-200 hover:text-orange-100 hover:underline">
                                     ¿Ya tienes cuenta? Inicia sesión
                                   </Link>
-                                   <Link to="/login-empleado" className="text-md text-orange-200 hover:text-orange-100 hover:underline">
-                                    ¿Eres empleado? Accede
-                                  </Link>
+                                  
                               </div>
                                  <button
                                    type="submit"

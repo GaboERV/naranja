@@ -90,17 +90,12 @@ function LoginEmpleado() {
                         </div>
                         <div className="mt-6 flex flex-col items-center gap-2">
                                 <div className="flex flex-col items-begin mb-2 gap-2">
-                                    <Link
-                                        to="/Registro"
-                                        className="text-md text-orange-200 hover:text-orange-100 hover:underline"
-                                    >
-                                        ¿No tienes cuenta? Regístrate
-                                    </Link>
+
                                     <Link
                                         to="/login"
                                         className="text-md text-orange-200 hover:text-orange-100 hover:underline"
                                     >
-                                        ¿Ya tienes cuenta? Inicia sesión
+                                        ¿Eres una empresa? Inicia sesión
                                     </Link>
                                 </div>
                              <button
