@@ -52,6 +52,7 @@ function Registro() {
             }
 
             navigate('/login');
+            alert('Checa tu correo para verificar tu cuenta');
         } catch (err) {
             setError('Error de red al intentar registrar el usuario.');
         }
